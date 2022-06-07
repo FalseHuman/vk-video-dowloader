@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Header
 from fastapi import HTTPException
 from fastapi.middleware.cors import CORSMiddleware 
 from vk_video_pars import parser_video
 from fastapi.staticfiles import StaticFiles
+from typing import Union
 
 app = FastAPI(title="Parser vk-video")
 # Если запущен dev-server vue, эти строки нужно расскоментировать
@@ -18,7 +19,7 @@ app = FastAPI(title="Parser vk-video")
     "/link_vk",
     response_description="Получение видео по ссылке и user-agent",
 )
-async def link_vk(link, user_agent):
+async def link_vk(link, user_agent: Union[str, None] = Header(default=None)):
     link = parser_video(user_agent, link)
     if link == "error":
         raise HTTPException(404, "Ошибка при получении видео: возможно видео не существует или оно скрыто настройками приватности.")
