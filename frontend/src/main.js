@@ -10,7 +10,7 @@ Vue.config.productionTip = false
 Vue.use(browserDetect)
 
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = 'http://localhost:8000/' // the FastAPI backend
+axios.defaults.baseURL = 'https://vk-video-loader.herokuapp.com/' // the FastAPI backend
 
 new Vue({
   router,

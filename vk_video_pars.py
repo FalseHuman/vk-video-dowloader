@@ -1,4 +1,4 @@
-import time
+import time, os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 ''' Воскресенская солянка '''
@@ -24,6 +24,7 @@ def rename_vk_link_to_mobile_vk_link(video_vk_link):
 
 def create_driver(user_agent):
     options = Options()
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     options.add_argument("--headless")
     options.add_argument(
         f"user-agent={user_agent}")
@@ -31,7 +32,7 @@ def create_driver(user_agent):
     options.add_argument("--v=99")
     options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(
-        executable_path='/home/falsehuman/vk-video/chromedriver', chrome_options=options)
+        executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=options)
     return driver
 
 
