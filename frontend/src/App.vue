@@ -1,0 +1,56 @@
+<template>
+  <div id="app">
+    <router-view />
+  </div>
+</template>
+
+<style>
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+.centered {
+  width: 60%;
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  overflow: auto;
+}
+.center-video {
+  width: 80% !important;
+  display: block;
+  margin: 0 auto;
+}
+.center-form {
+  width: 60% !important;
+  display: block;
+  margin: 0 auto;
+}
+.favicon-icon {
+  height: 60px;
+}
+@media (max-width: 768px) {
+  .center-form {
+    width: 100% !important;
+    display: block;
+    margin: 0 auto;
+  }
+  .center-video {
+    width: 100% !important;
+    display: block;
+    margin: 0 auto;
+  }
+  .favicon-icon {
+    height: 25px;
+  }
+}
+</style>
