@@ -1,22 +1,19 @@
 import time, os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from urllib.parse import urlparse
+from urllib.parse import parse_qs
 ''' Воскресенская солянка '''
 
 
 def rename_vk_link_to_mobile_vk_link(video_vk_link):
-    if ("https://vk.com/video" in video_vk_link and "?z=" not in video_vk_link and "playlist" not in video_vk_link) or "https://m.vk.com/video" in video_vk_link:
+    if ("z=" not in video_vk_link) or "https://m.vk.com/video" in video_vk_link:
         return video_vk_link.replace('vk.com', 'm.vk.com')
     else:
-        m_video_vk_link = ''
-        for i in range(video_vk_link.find('z'), len(video_vk_link)):
-            m_video_vk_link += video_vk_link[i]
-
-        split_m_video_vk_link = 'https://m.vk.com/'
-        for index in m_video_vk_link.split('/'):
-            if 'z=video' in index:
-                split_m_video_vk_link += index.replace('z=', '')
-        return split_m_video_vk_link
+        parsed_url = urlparse(video_vk_link)
+        captured_value = parse_qs(parsed_url.query)['z'][0]
+        m_video_vk_link = captured_value.split('/')
+        return 'https://m.vk.com/' + m_video_vk_link[0]
 
 #link = rename_vk_link_to_mobile_vk_link(input())
 #print('mobile link vk', link)
