@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 
 
 def rename_vk_link_to_mobile_vk_link(video_vk_link):
-    if ("https://vk.com/video" in video_vk_link and "?z=" not in video_vk_link) or "https://m.vk.com/video" in video_vk_link:
+    if ("https://vk.com/video" in video_vk_link and "?z=" not in video_vk_link and "playlist" not in video_vk_link) or "https://m.vk.com/video" in video_vk_link:
         return video_vk_link.replace('vk.com', 'm.vk.com')
     else:
         m_video_vk_link = ''
