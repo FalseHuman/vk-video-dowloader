@@ -39,6 +39,7 @@ def create_driver(user_agent):
 def parser_video(user_agent, link):
     driver = create_driver(user_agent)
     link = rename_vk_link_to_mobile_vk_link(link)
+    print('link', link)
     driver.get(link)
     time.sleep(2)
     try:
